@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agency xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Allibert_Trekking.xsd">
+    <clients>
+        <client id="1" nom="Mahjoub" prenom="Nidhal" num_CIN="1234"></client>
+        <client id="2" nom="Azzouzi" prenom="Nouamane" num_CIN="5678"></client>
+        <client id="3" nom="Morgan" prenom="Arthur" num_CIN="8765"></client>
+        <client id="4" nom="Marston" prenom="John" num_CIN="4321"></client>
+
+
+
+    </clients>
+
+    <guides>
+        <guide id="1" nom="Alexandre" specialité="Afrique"/>
+        <guide id="1" nom="Julien" specialité="Afrique"/>
+    </guides>
+
+    <destinations>
+        <destination id_dest="1" pays="Egypte" lieu="Le Caire" continent="Afrique"></destination>
+        <destination id_dest="2" pays="Maroc" lieu="Desert" continent="Afrique"></destination>
+        <destination id_dest="3" pays="Namibie" lieu="Safari" continent="Afrique"></destination>
+        <destination id_dest="4" pays="Zimbabwe" lieu="Safari" continent="Afrique"></destination>
+    </destinations>
+
+    <hebergements>
+        <hebergement id="1" type = "Hotel"/>
+        <hebergement id="2" type = "Camping"/>
+        <hebergement id="3" type = "AirBnB"/>
+    </hebergements>
+
+    <activites>
+        <activite id="1" type = "Voyage" niveau="1"/>
+        <activite id="2" type = "Musée" niveau="2"/>
+        <activite id="3" type = "Randonné" niveau="3"/>
+        <activite id="4" type = "Repos" niveau="2"/>
+    </activites>
+
+
+    <trips>
+        <trip>
+            <destinations>
+                <destination id_dest="1"/>
+            </destinations>
+            <summary>
+                <description>
+                Les plus beaux sites de l’Egypte ancienne réunis dans un voyage complet :
+                — vestiges et bibliothèques d’Alexandrie,
+                — sphinx, pyramides de Guiseh et Saqqarah, musée et vieux Caire 
+                — villages et jardins nubiens, Abu Simbel et les plus beaux temples au fil du Nil.
+                </description>
+                <duration>11 Jours</duration>
+                <hebergements>
+                    <hebergement id="1"/>
+                    <hebergement id="2"/>
+                </hebergements>
+                <progression>
+                    <day number="1">
+                        <activities>
+                            <activite id="1"></activite>
+                        </activities>
+                    </day>
+                    <day number="2">
+                        <activities>
+                            <activite id="3"/>
+                        </activities>
+                    </day>
+                    <day number="3">
+                        <activities>
+                            <activite id="4"/>
+                        </activities>
+                    </day>
+                                </progression>
+                <miscellaneous>
+                    <weather>Climat méditerranéen</weather>
+                    <currency>Livre égyptienne</currency>
+                </miscellaneous>
+
+            </summary>
+            <guides>
+                <guide id ="1"/>
+            </guides>
+            <reservations>
+                <reservation prix ="1000" effectif="2" depart="26/11/2019" retour="06/12/2019">
+                    <enrolled>
+                        <client id="1"/>
+                        <client id="2"/>
+                    </enrolled>
+                </reservation>
+                <reservation prix ="1700" effectif="2" depart="09/12/2019" retour="25/12/2019">
+                    <enrolled>
+                        <client id="3"/>
+                        <client id="4"/>
+                    </enrolled>
+                </reservation>
+            </reservations>
+            <reviews>
+                <review date="10/12/2019" client-id="1" content="Cool"/>
+                
+                <review date="27/12/2019" client-id="3" content="Nice"/>
+                
+            </reviews>
+        </trip>
+    </trips>
+
+</agency>

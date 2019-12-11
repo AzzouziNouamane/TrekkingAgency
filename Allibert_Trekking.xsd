@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="Client" mixed="true">
+        <xs:attribute name="id" type="xs:int"></xs:attribute>
+        <xs:attribute name="nom" type="xs:string"></xs:attribute>
+        <xs:attribute name="prenom" type="xs:string"></xs:attribute>
+        <xs:attribute name="num_CIN" type="xs:int"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="Guide" mixed="true">
+        <xs:attribute name="id" type="xs:int"></xs:attribute>
+        <xs:attribute name="nom" type="xs:string"></xs:attribute>
+        <xs:attribute name="specialité" type="xs:string"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="Destination" mixed="true">
+        <xs:attribute name="id_dest" type="xs:int"></xs:attribute>
+        <xs:attribute name="pays" type="xs:string"></xs:attribute>
+        <xs:attribute name="lieu" type="xs:string"></xs:attribute>
+        <xs:attribute name="continent" type="xs:string"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="Hebergement" mixed ="true">
+        <xs:attribute name="id" type="xs:int"></xs:attribute>
+        <xs:attribute name="type" type="xs:string"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="Activite">
+        <xs:attribute name="id" type="xs:int"></xs:attribute>
+        <xs:attribute name="type" type="xs:string"></xs:attribute>
+        <xs:attribute name="niveau" type="xs:int"></xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="Reservation">
+        <xs:sequence>
+            <xs:element name="enrolled" type="Enrolled">
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="prix" type="xs:int"/>
+        <xs:attribute name="effectif" type="xs:int"/>
+        <xs:attribute name="depart" type="xs:string"/>
+        <xs:attribute name="retour" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="Enrolled">
+        <xs:sequence>
+            <xs:element name="client" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="id" type="xs:int"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="dest">
+        <xs:sequence>
+            <xs:element name="destination" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="id_dest" type="xs:int"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Misc">
+        <xs:sequence>
+            <xs:element name="weather" type="xs:string"></xs:element>
+            <xs:element name="currency" type="xs:string"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+     
+
+
+
+
+    <xs:element name="agency">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="clients">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="client" maxOccurs="unbounded" type="Client">
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="guides">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="guide" maxOccurs="unbounded" type="Guide">
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="destinations">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="destination" maxOccurs="unbounded" type="Destination">
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="hebergements">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="hebergement" maxOccurs="unbounded" type="Hebergement">
+
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="activites">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="activite" maxOccurs="unbounded" type="Activite">
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="trips">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="trip">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="destinations" maxOccurs="unbounded" type="dest">
+
+                                        </xs:element>
+                                        <xs:element name="summary">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="description" type="xs:string"></xs:element>
+                                                    <xs:element name="duration" type="xs:string"></xs:element>
+                                                    <xs:element name="hebergements">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="hebergement" maxOccurs="unbounded">
+                                                                    <xs:complexType>
+                                                                        <xs:attribute name="id" type="xs:int"></xs:attribute>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="progression">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="day" maxOccurs="unbounded">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="activities">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <xs:element name="activite">
+                                                                                            <xs:complexType>
+                                                                                                <xs:attribute name="id" type="xs:int"></xs:attribute>
+                                                                                            </xs:complexType>
+                                                                                        </xs:element>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                        <xs:attribute name="number" type="xs:int"></xs:attribute>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="miscellaneous" maxOccurs="unbounded" type="Misc">
+                             
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="guides">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="guide">
+                                                        <xs:complexType>
+                                                            <xs:attribute name="id" type="xs:int"></xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="reservations">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="reservation" maxOccurs="unbounded" type="Reservation">
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="reviews">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="review" maxOccurs="unbounded">
+                                                        <xs:complexType>
+
+                                                            <xs:attribute name="date" type="xs:string"></xs:attribute>
+                                                            <xs:attribute name="content" type="xs:string"></xs:attribute>
+                                                            <xs:attribute name="client-id" type="xs:int"></xs:attribute>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+
+        </xs:complexType>
+        <xs:key name="clientID">
+            <xs:selector xpath="./clients/client"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:key name="DestinationID">
+            <xs:selector xpath="./destinations/destination"/>
+            <xs:field xpath="@id_dest"/>
+        </xs:key>
+    </xs:element>
+</xs:schema>
+
